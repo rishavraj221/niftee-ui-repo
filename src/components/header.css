@@ -1,0 +1,85 @@
+.header-container {
+  width: 80%;
+  border-bottom: 2px solid #edeff2;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 35px;
+}
+
+.header-content-left,
+.header-content-right {
+  display: flex;
+  align-items: center;
+}
+
+.video-url-container {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(38, 51, 77, 0.03);
+  width: 500px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  margin-right: 20px;
+}
+
+.video-url-input {
+  border: none;
+  margin-left: 20px;
+  width: 390px;
+  padding: 10px;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+  color: #aaaaaa;
+}
+.video-url-input:focus {
+  outline: none;
+}
+.video-url-input::placeholder {
+  color: #c3cad9;
+}
+
+.input-arrow:hover {
+  cursor: pointer;
+}
+
+.video-url-content-left {
+  display: flex;
+  align-items: center;
+}
+
+.video-url-placeholder {
+  margin-left: 20px;
+}
+
+.camera-icon:hover {
+  cursor: pointer;
+}
+
+.vimeo-video-play-icon {
+  margin-left: 35px;
+}
+.vimeo-video-play-icon:hover {
+  cursor: pointer;
+}
+
+.header-settings-container {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.header-settings-container:hover {
+  cursor: pointer;
+}
+
+.settings-text {
+  margin-left: 10px;
+}
+
+.header-profile:hover {
+  cursor: pointer;
+}

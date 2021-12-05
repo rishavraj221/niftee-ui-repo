@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500;1,600&display=swap");
+
+@font-face {
+  font-family: "palanquin";
+  src: url("./assets/fonts/Palanquin_Dark/PalanquinDark-Medium.ttf");
+}
+
+@font-face {
+  font-family: "baloo";
+  src: url("./assets/fonts/Baloo_Chettan_2/BalooChettan2-Medium.ttf");
+}
+
+@font-face {
+  font-family: "nats";
+  src: url("./assets/fonts/nats/NATS-Regular.ttf");
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  background-color: #f7f8fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+button {
+  background-color: #0066da; /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.text-light {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+  color: #c3cad9;
+}
+
+.text-dark {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+  color: #6b7a99;
+}
