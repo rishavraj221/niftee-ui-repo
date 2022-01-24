@@ -2,14 +2,20 @@ import React, { useState, useRef, useEffect } from "react";
 
 import useInterval from "../hooks/useInterval";
 import captureVideoFrame from "../utils/capture-video-frames";
-import { uploadFrame } from "../api/demo";
+import { uploadFrame, getUploadedFramesCount } from "../api/demo";
 
 const VideoFramesSection = ({
+  sessionId,
   play,
   mockFrames,
   videoRef,
   localVideo,
   videoPlayer,
+  timeInSeconds,
+  generatedFrames,
+  setGeneratedFrames,
+  uploadedFrames,
+  setUploadedFrames,
 }) => {
   const [framesObj, setFramesObj] = useState([]);
   const [framesObjToMap, setFramesObjToMap] = useState([]);
@@ -34,7 +40,7 @@ const VideoFramesSection = ({
         localVideo ? videoPlayer.getInternalPlayer() : videoRef.current
       );
 
-      if (frame.blob.size > 12000) {
+      if (frame.blob.size > 8000) {
         setFramesObj([
           ...framesObj,
           {
@@ -45,55 +51,58 @@ const VideoFramesSection = ({
             i: 0.0,
           },
         ]);
+        setGeneratedFrames(generatedFrames + 1);
 
         try {
+          setFPScounter(fpsCounter + 1);
           // console.log("processData started");
-          await uploadFrame("rishavraj_test", fpsCounter, frame.data);
-          // console.log(JSON.stringify(data) + "processData success");
+          await uploadFrame(sessionId, fpsCounter, frame.data);
+          console.log("upload frame success");
         } catch (ex) {
           console.log(ex);
         }
-
-        setFPScounter(fpsCounter + 1);
       }
     }
-  }, 333);
+  }, 310);
 
   useInterval(() => {
     if (play) setFramesObjToMap(framesObj);
   }, 1500);
 
+  useInterval(async () => {
+    try {
+      if (timeInSeconds > 2) {
+        const { data } = await getUploadedFramesCount(sessionId);
+        if (data) setUploadedFrames(data.count);
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  }, 500);
+
   return (
-    <div className="video-frames-section">
-      {framesObjToMap && framesObjToMap.length > 0
-        ? framesObjToMap.map((frame, index) => (
-            <div className="frame-container" key={index}>
-              <img src={frame.image} alt="Niftee" className="frame-image"></img>
-            </div>
-          ))
-        : mockFrames.map((frame, index) => (
-            <div className="frame-container" key={index}>
-              <div className="frame-image"></div>
-            </div>
-          ))}
-      <div ref={frameEndRef} />
-    </div>
+    <>
+      {/* <div>{generatedFrames}</div> */}
+      <div className="video-frames-section">
+        {framesObjToMap && framesObjToMap.length > 0
+          ? framesObjToMap.map((frame, index) => (
+              <div className="frame-container" key={index}>
+                <img
+                  src={frame.image}
+                  alt="Niftee"
+                  className="frame-image"
+                ></img>
+              </div>
+            ))
+          : mockFrames.map((frame, index) => (
+              <div className="frame-container" key={index}>
+                <div className="frame-image"></div>
+              </div>
+            ))}
+        <div ref={frameEndRef} />
+      </div>
+    </>
   );
 };
 
 export default VideoFramesSection;
-
-// each frame result front end code
-//
-// <div className="frame-container" key={index}>
-// <div className="frame-heading">{frame.sentimentName}</div>
-// <img src={frame.image} alt="Niftee" className="frame-image"></img>
-// <div className="frame-result">
-//     {"V| " +
-//     frame.v.toPrecision(3) +
-//     "  A| " +
-//     frame.a.toPrecision(3) +
-//     "  I| " +
-//     frame.i.toPrecision(3)}
-// </div>
-// </div>

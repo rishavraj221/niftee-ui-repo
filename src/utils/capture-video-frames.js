@@ -4,7 +4,7 @@ export default function captureVideoFrame(video, format, quality) {
   }
 
   format = format || "jpeg";
-  quality = quality || 0.2;
+  quality = quality || 0.13;
 
   if (!video || (format !== "png" && format !== "jpeg")) {
     return false;

@@ -1,37 +1,22 @@
 import React from "react";
 
-const Upload = ({ color = "#555555", size = "24" }) => {
+const UploadSVG = ({ color = "#c3cad9", size = "22.183" }) => {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 22.186 22.183"
     >
       <path
-        d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-        stroke={color}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M17 8L12 3L7 8"
-        stroke={color}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 3V15"
-        stroke={color}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        id="Icon_awesome-upload"
+        data-name="Icon awesome-upload"
+        d="M12.826,16.642H9.36A1.037,1.037,0,0,1,8.32,15.6V8.322H4.52a.865.865,0,0,1-.611-1.478L10.5.249a.84.84,0,0,1,1.183,0l6.6,6.6a.865.865,0,0,1-.611,1.478h-3.8V15.6A1.037,1.037,0,0,1,12.826,16.642Zm9.36-.347v4.853a1.037,1.037,0,0,1-1.04,1.04H1.04A1.037,1.037,0,0,1,0,21.148V16.3a1.037,1.037,0,0,1,1.04-1.04H6.933V15.6A2.428,2.428,0,0,0,9.36,18.028h3.467A2.428,2.428,0,0,0,15.253,15.6v-.347h5.893A1.037,1.037,0,0,1,22.186,16.3Zm-5.373,3.813a.867.867,0,1,0-.867.867A.869.869,0,0,0,16.813,20.108Zm2.773,0a.867.867,0,1,0-.867.867A.869.869,0,0,0,19.586,20.108Z"
+        transform="translate(0 -0.005)"
+        fill={color}
       />
     </svg>
   );
 };
 
-export default Upload;
+export default UploadSVG;

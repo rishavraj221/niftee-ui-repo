@@ -1,4 +1,4 @@
-.logo {
+/* .logo {
   font-family: "baloo";
   font-weight: 600;
   font-size: 36px;
@@ -30,6 +30,25 @@
   min-width: 400px;
   background-color: black;
   border-radius: 5px;
+}
+
+.video-controls {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+.video-timer,
+.frame-stats {
+  font-family: "Roboto-Bold";
+  color: #c3cad9;
+  font-size: 20px;
+}
+
+.frame-stats {
+  margin-top: 40px;
 }
 
 .ai-analysis-container {
@@ -68,8 +87,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   color: #c3cad9;
   font-size: 25px;
-  font-family: "Roboto";
-  font-weight: bold;
+  font-family: "Roboto-Black";
 }
 
 .frame-container {
@@ -78,9 +96,8 @@
 
 .frame-heading,
 .frame-result {
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 13px;
-  font-weight: bold;
   color: #76787e;
   text-align: center;
 }
@@ -94,9 +111,8 @@
 }
 
 .ai-analysis-result-head {
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 16px;
-  font-weight: bold;
   text-align: center;
   color: #c3cad9;
 }
@@ -181,25 +197,22 @@
 
 .ai-analysis-result-detail-head {
   text-align: center;
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 13px;
-  font-weight: bold;
   color: #6b7a99;
 }
 
 .ai-analysis-result-detail-val {
   text-align: center;
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 13px;
-  font-weight: bold;
   color: #c3cad9;
 }
 
 .ai-analysis-result-detail-sn {
   text-align: center;
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 22px;
-  font-weight: bold;
   color: #c3cad9;
 }
 
@@ -208,4 +221,4 @@
   width: 80%;
   background-color: #edeff2;
   margin: 10px 0px;
-}
+} */

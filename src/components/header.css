@@ -1,4 +1,4 @@
-.header-container {
+/* .header-container {
   width: 80%;
   border-bottom: 2px solid #edeff2;
   margin: 0 auto;
@@ -31,9 +31,8 @@
   margin-left: 20px;
   width: 390px;
   padding: 10px;
-  font-family: "Roboto";
+  font-family: "Roboto-Bold";
   font-size: 14px;
-  font-weight: bold;
   color: #aaaaaa;
 }
 .video-url-input:focus {
@@ -82,4 +81,4 @@
 
 .header-profile:hover {
   cursor: pointer;
-}
+} */

@@ -1,0 +1,34 @@
+.home-container {
+  width: 75%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.contents-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -60px;
+}
+
+.player-container,
+.analysis-container {
+  width: 54.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-container {
+  width: 45%;
+}
+
+@media screen and (max-width: 1370px) {
+  .contents-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .player-container,
+  .analysis-container {
+    width: 80%;
+  }
+}

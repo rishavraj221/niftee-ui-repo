@@ -1,0 +1,40 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.header-settings {
+  position: absolute;
+  right: 15%;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.header-settings:hover .settings-menu-container {
+  display: flex;
+}
+
+.settings-menu-container {
+  display: none;
+  position: absolute;
+  height: 50px;
+  width: 120px;
+  margin-left: -105px;
+  border-radius: 15px;
+  background-color: #fff;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.16));
+  padding-left: 15px;
+  align-items: center;
+}
+.settings-menu-container:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+.logout-text {
+  margin-left: 10px;
+  font-family: "Roboto-Bold";
+  font-size: 18px;
+  color: rgb(156, 156, 156);
+}

@@ -5,8 +5,9 @@ import Header from "../components/header";
 import AudioTranscribe from "../components/AudioTranscript/audio";
 import VideoFramesSection from "../components/video-frames-section";
 import AIGraph from "../components/AiGraph";
-// import useInterval from "../hooks/useInterval";
+import useInterval from "../hooks/useInterval";
 import { getScore } from "../api/demo";
+import { secondsToTime } from "../utils/frequent";
 import "./home.css";
 
 const frames = [
@@ -101,7 +102,7 @@ const frames = [
 //   i: 0.0,
 // };
 
-const Home = () => {
+const Home = ({ session_id }) => {
   const [videoOrCamera, setVideoOrCamera] = useState("");
   const [videoURLval, setVideoURLval] = useState(null);
 
@@ -116,6 +117,10 @@ const Home = () => {
 
   const [faceScoreData, setFaceScoreData] = useState([]);
   const [audioScoreData, setAudioScoreData] = useState([]);
+
+  const [timeInSeconds, setTimeInSeconds] = useState(0);
+  const [generatedFrames, setGeneratedFrames] = useState(0);
+  const [uploadedFrames, setUploadedFrames] = useState(0);
 
   const videoRef = useRef(null);
 
@@ -146,7 +151,7 @@ const Home = () => {
     try {
       if (play) {
         console.log("score api called");
-        const { data } = await getScore("rishavraj_test");
+        const { data } = await getScore(session_id);
 
         console.log(data);
 
@@ -170,7 +175,13 @@ const Home = () => {
     }
   };
 
-  // useInterval(handleScore, 5000);
+  useInterval(() => {
+    if (timeInSeconds > 14) handleScore();
+  }, 5000);
+
+  useInterval(() => {
+    if (play) setTimeInSeconds(timeInSeconds + 1);
+  }, 1000);
 
   return (
     <div className="home-container">
@@ -246,22 +257,18 @@ const Home = () => {
                 <div className="ai-analysis-result-detail-val">
                   {"V| " +
                     (faceScoreData.length > 0
-                      ? faceScoreData[
-                          faceScoreData.length - 1
-                        ].frameAvgxAxis.toPrecision(3)
+                      ? faceScoreData[faceScoreData.length - 1].x.toPrecision(3)
                       : "0.00") +
                     "  A| " +
                     (faceScoreData.length > 0
-                      ? faceScoreData[
-                          faceScoreData.length - 1
-                        ].frameAvgyAxis.toPrecision(3)
+                      ? faceScoreData[faceScoreData.length - 1].y.toPrecision(3)
                       : "0.00") +
                     "  I| " +
                     "0.00"}
                 </div>
                 <div className="ai-analysis-result-detail-sn">
                   {faceScoreData.length > 0
-                    ? faceScoreData[faceScoreData.length - 1].frameAvgEmotion
+                    ? faceScoreData[faceScoreData.length - 1].sentimentName
                     : "Sentiment Name"}
                 </div>
                 <div className="ai-result-bar"></div>
@@ -271,22 +278,22 @@ const Home = () => {
                 <div className="ai-analysis-result-detail-val">
                   {"V| " +
                     (audioScoreData.length > 0
-                      ? audioScoreData[
-                          audioScoreData.length - 1
-                        ].nlpxAxis.toPrecision(3)
+                      ? audioScoreData[audioScoreData.length - 1].x.toPrecision(
+                          3
+                        )
                       : "0.00") +
                     "  A| " +
                     (audioScoreData.length > 0
-                      ? audioScoreData[
-                          audioScoreData.length - 1
-                        ].nlpxAxis.toPrecision(3)
+                      ? audioScoreData[audioScoreData.length - 1].y.toPrecision(
+                          3
+                        )
                       : "0.00") +
                     "  I| " +
                     "0.00"}
                 </div>
                 <div className="ai-analysis-result-detail-sn">
                   {audioScoreData.length > 0
-                    ? audioScoreData[audioScoreData.length - 1].nlpEmotion
+                    ? audioScoreData[audioScoreData.length - 1].sentimentName
                     : "Sentiment Name"}
                 </div>
               </div>
@@ -295,44 +302,67 @@ const Home = () => {
         </div>
 
         {showPlayPauseBtn && (
-          <button
-            onClick={() => {
-              if (videoOrCamera === "video") {
-                if (!play) {
-                  const audStr = new MediaStream(
-                    vPlayer.getInternalPlayer().captureStream().getAudioTracks()
-                  );
-                  setLocalAudioStream(audStr);
-                }
-                setPlay(!play);
-                console.log(play);
-              } else {
-                if (play) {
-                  videoRef.current.pause();
-                  setPlay(false);
-                  videoStream.getTracks().forEach((track) => track.stop());
+          <div className="video-controls">
+            <button
+              onClick={() => {
+                if (videoOrCamera === "video") {
+                  if (!play) {
+                    const audStr = new MediaStream(
+                      vPlayer
+                        .getInternalPlayer()
+                        .captureStream()
+                        .getAudioTracks()
+                    );
+                    setLocalAudioStream(audStr);
+                  }
+                  setPlay(!play);
                 } else {
-                  setVideoOrCamera("camera");
-                  handlePlay();
+                  if (play) {
+                    videoRef.current.pause();
+                    setPlay(false);
+                    videoStream.getTracks().forEach((track) => track.stop());
+                  } else {
+                    setVideoOrCamera("camera");
+                    handlePlay();
+                  }
                 }
-              }
-            }}
-          >
-            {play ? "Pause" : "Play"}
-          </button>
+              }}
+            >
+              {play ? "Pause" : "Play"}
+            </button>
+            <div className="video-timer">
+              {secondsToTime(timeInSeconds).h +
+                ":" +
+                secondsToTime(timeInSeconds).m +
+                ":" +
+                secondsToTime(timeInSeconds).s}
+            </div>
+          </div>
         )}
 
-        <button onClick={handleScore}>Get Score</button>
+        {/* <button onClick={handleScore}>Get Score</button> */}
+
+        <div className="frame-stats">
+          Generated Frames:{" "}
+          <span style={{ color: "#42b1f2" }}>{generatedFrames}</span>, Uploaded
+          Frames: <span style={{ color: "#309423" }}>{uploadedFrames}</span>
+        </div>
 
         <VideoFramesSection
+          sessionId={session_id}
           play={play}
           mockFrames={frames}
           videoRef={videoRef}
           localVideo={videoOrCamera === "video"}
           videoPlayer={vPlayer}
+          generatedFrames={generatedFrames}
+          setGeneratedFrames={setGeneratedFrames}
+          uploadedFrames={uploadedFrames}
+          setUploadedFrames={setUploadedFrames}
         />
         <div className="audio-transcribe-section">
           <AudioTranscribe
+            sessionId={session_id}
             play={play}
             videoOrCamera={videoOrCamera}
             localAudioStream={localAudioStream}

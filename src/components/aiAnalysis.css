@@ -1,0 +1,114 @@
+.ai-analysis-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai-graph-svg {
+  position: relative;
+}
+
+.audio-plot,
+.facial-exp-plot {
+  background-color: rgba(253, 254, 255, 0.5);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  z-index: 100;
+  animation: opac 1s;
+}
+@keyframes opac {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sentiment-name {
+  margin-left: 8px;
+  font-family: "Roboto-Regular";
+  font-size: 16px;
+}
+
+.word-analysis-cont {
+  width: 530px;
+  height: 120px;
+  background-color: rgba(41, 204, 57, 0.08);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.frame-analysis-cont {
+  width: 530px;
+  height: 120px;
+  background-color: rgba(51, 97, 255, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.analysis-detail-cont {
+  width: 30%;
+  height: 100px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.word-count {
+  font-family: "Roboto-Bold";
+  font-size: 26px;
+}
+
+.counter-title {
+  font-family: "Roboto-Bold";
+  font-size: 18px;
+  color: #c3cad9;
+  margin-bottom: 8px;
+}
+
+.avg-counter-title {
+  font-family: "Roboto-Light";
+  font-size: 13px;
+}
+
+.avg-count {
+  height: 45px;
+  width: 155px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto-Bold";
+  font-size: 16px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.batch-processed-title {
+  text-align: center;
+  font-family: "Roboto-Light";
+  font-size: 13px;
+}
+
+.batch-processed-count {
+  padding: 6px 25px;
+  color: white;
+  font-family: "Roboto-Bold";
+  font-size: 20px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}

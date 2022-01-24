@@ -1,0 +1,98 @@
+.modal-container {
+  outline: none;
+  background-color: white;
+  height: 400px;
+  width: 400px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-h1 {
+  font-family: "Roboto-Bold";
+  font-size: 20px;
+  color: rgb(184, 184, 184);
+}
+
+.video-controls-container {
+  background-color: #ffffff;
+  width: 96%;
+  height: 59px;
+  border-radius: 59px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.play-icon:hover {
+  cursor: pointer;
+}
+
+.timer-text {
+  font-family: "Roboto-Bold";
+  font-size: 17px;
+  color: #8a909d;
+}
+
+.icons-cont {
+  display: flex;
+  align-items: center;
+  width: 90px;
+}
+
+.video-player {
+  height: 430px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.audio-transcribe-section {
+  height: 80px;
+  background-color: white;
+  border-radius: 6px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  margin-top: 20px;
+  overflow-y: scroll;
+  padding: 15px;
+  color: #151515;
+  scrollbar-color: #dedede;
+  font-size: 20px;
+  font-family: "Roboto-Regular";
+}
+
+.video-frames-section {
+  background-color: white;
+  border-radius: 6px;
+  margin: 20px 0;
+  overflow-x: scroll;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  scrollbar-color: #dedede;
+  height: 100px;
+}
+
+.frame-container {
+  margin: 0 12px;
+}
+
+.frame-image {
+  height: 75px;
+  width: 150px;
+  background: linear-gradient(165.85deg, #c342f2 -64.73%, #42b1f2 110.76%);
+  border-radius: 5px;
+}
